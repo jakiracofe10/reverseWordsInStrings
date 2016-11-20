@@ -11,10 +11,11 @@ int main() {
         if (input[i] == ' ') {
             string word = (input.substr(prev, i - prev));
             words.push_back(word);
-            prev = i;
+            prev = i+1;
         }
     }
     words.push_back(input.substr(prev));
+
     for (int i=0; i<words.size(); i++) {
         int left = 0;
         int right = words[i].length() - 1;
