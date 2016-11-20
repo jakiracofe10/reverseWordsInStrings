@@ -3,6 +3,19 @@
 
 using namespace std;
 
+string reverseWord(string s) {
+    int left = 0;
+    int right = s.length() - 1;
+    while (left < right) {
+        s[right] = s[right] + s[left];
+        s[left] = s[right] - s[left];
+        s[right] = s[right] - s[left];
+    left++;
+    right--;
+    }
+    return s;
+}
+
 int main() {
     string input = "This is an example";
     vector<string> words;
@@ -15,17 +28,8 @@ int main() {
         }
     }
     words.push_back(input.substr(prev));
-
     for (int i=0; i<words.size(); i++) {
-        int left = 0;
-        int right = words[i].length() - 1;
-        while (left < right) {
-            words[i][right] = words[i][right] + words[i][left];
-            words[i][left] = words[i][right] - words[i][left];
-            words[i][right] = words[i][right] - words[i][left];
-            left++;
-            right--;
-        }
+        words[i] = reverseWord(words[i]);
         cout << words[i] << " ";
     }
 
